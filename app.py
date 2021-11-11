@@ -34,7 +34,7 @@ line_bot_api = LineBotApi(lineaccesstoken)
 app.config['SECRET_KEY'] = 'opencv'  
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 app.config['DOWNLOAD_FOLDER'] = DOWNLOAD_FOLDER
-# limit upload size upto 6mb
+# limit upload size upto  6mb
 app.config['MAX_CONTENT_LENGTH'] = 6 * 1024 * 1024
 
 def allowed_file(filename):
