@@ -148,6 +148,7 @@ def event_handle(event):
         return ''
 
     if msgType == "text":
+        $headers = getallheaders()
         msg = str(event["message"]["text"])
         replyObj = TextSendMessage(text=msg)
         line_bot_api.reply_message(rtoken, replyObj)
