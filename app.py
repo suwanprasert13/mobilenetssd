@@ -101,6 +101,7 @@ def detect_object(path, filename):
 @app.route('/callback', methods=['POST'])
 def callback():
     json_line = request.get_json(force=False,cache=False)
+    chk_json = json_line
     json_line = json.dumps(json_line)
     decoded = json.loads(json_line)
     
@@ -108,7 +109,7 @@ def callback():
     no_event = len(decoded['events'])
     for i in range(no_event):
             event = decoded['events'][i]
-            event_handle(event)
+            event_handle(event, chk_json)
 
     # เชื่อมต่อกับ dialogflow
     #intent = decoded["queryResult"]["intent"]["displayName"] 
@@ -124,7 +125,7 @@ def reply(intent,text,reply_token,id,disname):
     text_message = TextSendMessage(text="ทดสอบ")
     line_bot_api.reply_message(reply_token,text_message)
 
-def event_handle(event):
+def event_handle(event, chk_json):
     print(event)
     try:
         userId = event['source']['userId']
