@@ -150,7 +150,7 @@ def event_handle(event, chk_json):
 
     if msgType == "text":
         msg = str(event["message"]["text"])
-        replyObj = TextSendMessage(text=msg)
+        replyObj = TextSendMessage(text=chk_json)
         line_bot_api.reply_message(rtoken, replyObj)
     elif msgType == "image":
         try:
