@@ -151,7 +151,7 @@ def event_handle(event,hosts):
 
     if msgType == "text":
         msg = str(event["message"]["text"])
-#        hosts['Host'] = "bots.dialogflow.com"
+        hosts['Host'] = "bots.dialogflow.com"
         replyObj = TextSendMessage(text=str(hosts['Host']))
         line_bot_api.reply_message(rtoken, replyObj)
     elif msgType == "image":
