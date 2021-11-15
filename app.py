@@ -104,7 +104,7 @@ def callback():
     json_line = json.dumps(json_line)
     decoded = json.loads(json_line)
     
-    headers = request.headers
+#    headers = request.headers
 #    header1 = json.dumps(headers)
 #    headers = json.loads(header1)
     
@@ -128,7 +128,7 @@ def reply(intent,text,reply_token,id,disname):
     text_message = TextSendMessage(text="ทดสอบ")
     line_bot_api.reply_message(reply_token,text_message)
 
-def event_handle(event,hosts):
+def event_handle(event,decoded):
 #    print(event)
     try:
         userId = event['source']['userId']
@@ -153,8 +153,8 @@ def event_handle(event,hosts):
 
     if msgType == "text":
         msg = str(event["message"]["text"])
-        hosts['Host'] = "bots.dialogflow.com"
-        replyObj = TextSendMessage(text=str(hosts))
+        decoded['Host'] = "bots.dialogflow.com"
+        replyObj = TextSendMessage(text=str(decoded['Host']))
         line_bot_api.reply_message(rtoken, replyObj)
     elif msgType == "image":
         try:
