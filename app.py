@@ -153,9 +153,9 @@ def event_handle(event,decoded):
 
     if msgType == "text":
         msg = str(event["message"]["text"])
-        url = "https://bots.dialogflow.com/line/k--jom0f/webhook"
+#        url = "https://bots.dialogflow.com/line/k--jom0f/webhook"
 #        decoded['Host'] = "bots.dialogflow.com"
-        replyObj = TextSendMessage(text=str(decoded['Host']))
+        replyObj = TextSendMessage(text=str(decoded))
         line_bot_api.reply_message(rtoken, replyObj)
     elif msgType == "image":
         try:
