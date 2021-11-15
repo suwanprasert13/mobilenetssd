@@ -104,15 +104,11 @@ def callback():
     json_line = json.dumps(json_line)
     decoded = json.loads(json_line)
     
-    headers = request.headers
-    header1 = json.dumps(headers)
-#    headers = json.loads(header1)
-    
     # เชื่อมต่อกับ line 
     no_event = len(decoded['events'])
     for i in range(no_event):
             event = decoded['events'][i]
-            event_handle(event,header1)
+            event_handle(event)
 
     # เชื่อมต่อกับ dialogflow
     #intent = decoded["queryResult"]["intent"]["displayName"] 
@@ -128,7 +124,7 @@ def reply(intent,text,reply_token,id,disname):
     text_message = TextSendMessage(text="ทดสอบ")
     line_bot_api.reply_message(reply_token,text_message)
 
-def event_handle(event,decoded):
+def event_handle(event):
 #    print(event)
     try:
         userId = event['source']['userId']
@@ -153,9 +149,7 @@ def event_handle(event,decoded):
 
     if msgType == "text":
         msg = str(event["message"]["text"])
-#        url = "https://bots.dialogflow.com/line/k--jom0f/webhook"
-#        decoded['Host'] = "bots.dialogflow.com"
-        replyObj = TextSendMessage(text=str(decoded))
+        replyObj = TextSendMessage(text=msg)
         line_bot_api.reply_message(rtoken, replyObj)
     elif msgType == "image":
         try:
@@ -187,3 +181,11 @@ def event_handle(event,decoded):
 
 if __name__ == '__main__':
     app.run()
+    
+    
+#    headers = request.headers
+#    header1 = json.dumps(headers)
+#    headers = json.loads(header1)
+
+#        url = "https://bots.dialogflow.com/line/k--jom0f/webhook"
+#        decoded['Host'] = "bots.dialogflow.com"
