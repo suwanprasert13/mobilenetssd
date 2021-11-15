@@ -105,6 +105,8 @@ def callback():
     decoded = json.loads(json_line)
     
     headers = request.headers
+    headers = json.dumps(headers)
+    headers = json.loads(headers)
     
     # เชื่อมต่อกับ line 
     no_event = len(decoded['events'])
