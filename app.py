@@ -104,7 +104,7 @@ def callback():
     json_line = json.dumps(json_line)
     decoded = json.loads(json_line)
     
-#    headers = request.headers
+    headers = request.headers
 #    header1 = json.dumps(headers)
 #    headers = json.loads(header1)
     
@@ -112,7 +112,7 @@ def callback():
     no_event = len(decoded['events'])
     for i in range(no_event):
             event = decoded['events'][i]
-            event_handle(event,decoded)
+            event_handle(event,headers)
 
     # เชื่อมต่อกับ dialogflow
     #intent = decoded["queryResult"]["intent"]["displayName"] 
