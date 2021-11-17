@@ -42,7 +42,8 @@ def allowed_file(filename):
 '''
 @app.route('/', methods=['GET', 'POST'])
 def index():
-    if request.method == 'POST':
+    return ''
+'''    if request.method == 'POST':
         if 'file' not in request.files:
             flash('No file attached in request')
             return redirect(request.url)
@@ -60,7 +61,7 @@ def index():
             }
             return render_template("index.html", data=data)  
     return render_template('index.html')
-
+'''
 '''
 def process_file(path, filename):
     detect_object(path, filename)
