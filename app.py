@@ -151,7 +151,7 @@ def event_handle(event):
         json_headers = {'X-Line-Signature:'+headers['X-Line-Signature'],'Host:bots.dialogflow.com'}
         msg = str(event["message"]["text"])
         if msg == "สวัสดี":
-            replyObj = TextSendMessage(text="จ้า ดีด้วยจ้า")
+            replyObj = TextSendMessage(text="จ้า ดีด้วยจ๊ะ")
         else :
             replyObj = TextSendMessage(text=str(type(headers)))
         line_bot_api.reply_message(rtoken, replyObj)
