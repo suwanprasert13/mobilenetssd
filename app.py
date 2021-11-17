@@ -1,6 +1,6 @@
 import os
 from flask import Flask, request, redirect, url_for, render_template, send_from_directory, flash, jsonify
-from werkzeug.utils import secure_filename
+'''from werkzeug.utils import secure_filename
 #import cv2
 import numpy as np
 import json
@@ -8,7 +8,7 @@ import requests
 import tempfile, shutil, os
 from PIL import Image
 from io import BytesIO
-
+'''
 from linebot.models import (
     TemplateSendMessage, AudioSendMessage,
     MessageEvent, TextMessage, TextSendMessage,
