@@ -29,7 +29,7 @@ ALLOWED_EXTENSIONS = {'jpg', 'png','.jpeg'}
 lineaccesstoken = '833wmgC5++/Cm5YQ7vqL5K4T4PsNUzn8xuSEqhdM1rBTZx9ASXos87YideW6NGDzTYP5WYUnI3BQ2SVoPMa+oP0RiixTAkR6yVpjO8+IQD5sjClu5O11oIoS+k5ini1QG08/BVLw7ukx+tOUeTMmfQdB04t89/1O/w1cDnyilFU='
 
 line_bot_api = LineBotApi(lineaccesstoken)
-
+'''
 # APP CONFIGURATIONS
 app.config['SECRET_KEY'] = 'opencv'  
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
@@ -39,7 +39,7 @@ app.config['MAX_CONTENT_LENGTH'] = 6 * 1024 * 1024
 
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
-
+'''
 @app.route('/', methods=['GET', 'POST'])
 def index():
     if request.method == 'POST':
