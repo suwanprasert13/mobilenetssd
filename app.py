@@ -149,14 +149,14 @@ def event_handle(event):
     if msgType == "text":
         headers = request.headers
         headers = {'X-Line-Signature:'+headers['X-Line-Signature'],'Host:bots.dialogflow.com'}
-        headers = json.dumps(headers)
-        json_headers = json.loads(headers)
+#        headers = json.dumps(headers)
+#        json_headers = json.loads(headers)
         
         msg = str(event["message"]["text"])
         if msg == "สวัสดี":
             replyObj = TextSendMessage(text="จ้า ดีด้วยจ๊ะ")
         else :
-            replyObj = TextSendMessage(text=str(type(headers)))
+            replyObj = TextSendMessage(text=str(headers))
         line_bot_api.reply_message(rtoken, replyObj)
     elif msgType == "image":
         try:
