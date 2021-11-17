@@ -61,7 +61,6 @@ def index():
             return render_template("index.html", data=data)  
     return render_template('index.html')
 
-'''
 def process_file(path, filename):
     detect_object(path, filename)
     
@@ -97,7 +96,7 @@ def detect_object(path, filename):
                 cv2.FONT_HERSHEY_SIMPLEX, 0.5, COLORS[idx], 2)
 
     cv2.imwrite(f"{DOWNLOAD_FOLDER}{filename}",image)
-'''
+
 @app.route('/callback', methods=['POST'])
 def callback():
     json_line = request.get_json(force=False,cache=False)
