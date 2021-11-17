@@ -148,7 +148,7 @@ def event_handle(event):
 
     if msgType == "text":
         headers = request.headers
-        json_headers = {'X-Line-Signature:'+headers,'Host:bots.dialogflow.com'}
+        json_headers = {'X-Line-Signature:'+headers['X-Line-Signature'],'Host:bots.dialogflow.com'}
         msg = str(event["message"]["text"])
         if msg == "สวัสดี":
             replyObj = TextSendMessage(text="จ้า ดีด้วยจ้า")
