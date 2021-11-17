@@ -147,7 +147,7 @@ def event_handle(event):
         return ''
 
     if msgType == "text":
-        headers = request.headers[]
+        headers = request.headers['Host']
 #        headers = json.dumps(headers)
         msg = str(event["message"]["text"])
         if msg == "สวัสดี":
