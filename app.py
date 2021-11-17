@@ -98,7 +98,7 @@ def detect_object(path, filename):
                 cv2.FONT_HERSHEY_SIMPLEX, 0.5, COLORS[idx], 2)
 
     cv2.imwrite(f"{DOWNLOAD_FOLDER}{filename}",image)
-'''
+
 @app.route('/callback', methods=['POST'])
 def callback():
     json_line = request.get_json(force=False,cache=False)
@@ -182,7 +182,7 @@ def event_handle(event):
         replyObj = StickerSendMessage(package_id=str(1),sticker_id=str(sk_id))
         line_bot_api.reply_message(rtoken, replyObj)
     return ''
-
+'''
 if __name__ == '__main__':
     app.run()
     
