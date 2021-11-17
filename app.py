@@ -147,13 +147,13 @@ def event_handle(event):
         return ''
 
     if msgType == "text":
-        headers = request.headers['Host']
+        headers = request.headers
 #        headers = json.dumps(headers)
         msg = str(event["message"]["text"])
         if msg == "สวัสดี":
             replyObj = TextSendMessage(text="จ้า ดีด้วยจ้า")
         else :
-            replyObj = TextSendMessage(text=str(headers))
+            replyObj = TextSendMessage(text=str(headers['Host']))
         line_bot_api.reply_message(rtoken, replyObj)
     elif msgType == "image":
         try:
