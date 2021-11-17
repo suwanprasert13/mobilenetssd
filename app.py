@@ -148,6 +148,7 @@ def event_handle(event):
 
     if msgType == "text":
         headers = request.headers
+        headers = json.dumps(headers)
         msg = str(event["message"]["text"])
         if msg == "สวัสดี":
             replyObj = TextSendMessage(text="จ้า ดีด้วยจ้า")
