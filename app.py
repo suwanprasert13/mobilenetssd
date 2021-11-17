@@ -1,6 +1,6 @@
 import os
 from flask import Flask, request, redirect, url_for, render_template, send_from_directory, flash, jsonify
-'''from werkzeug.utils import secure_filename
+from werkzeug.utils import secure_filename
 #import cv2
 import numpy as np
 import json
@@ -8,7 +8,7 @@ import requests
 import tempfile, shutil, os
 from PIL import Image
 from io import BytesIO
-'''
+
 from linebot.models import (
     TemplateSendMessage, AudioSendMessage,
     MessageEvent, TextMessage, TextSendMessage,
@@ -29,7 +29,7 @@ ALLOWED_EXTENSIONS = {'jpg', 'png','.jpeg'}
 lineaccesstoken = '833wmgC5++/Cm5YQ7vqL5K4T4PsNUzn8xuSEqhdM1rBTZx9ASXos87YideW6NGDzTYP5WYUnI3BQ2SVoPMa+oP0RiixTAkR6yVpjO8+IQD5sjClu5O11oIoS+k5ini1QG08/BVLw7ukx+tOUeTMmfQdB04t89/1O/w1cDnyilFU='
 
 line_bot_api = LineBotApi(lineaccesstoken)
-'''
+
 # APP CONFIGURATIONS
 app.config['SECRET_KEY'] = 'opencv'  
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
@@ -39,11 +39,10 @@ app.config['MAX_CONTENT_LENGTH'] = 6 * 1024 * 1024
 
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
-'''
+
 @app.route('/', methods=['GET', 'POST'])
 def index():
-    return ''
-'''    if request.method == 'POST':
+    if request.method == 'POST':
         if 'file' not in request.files:
             flash('No file attached in request')
             return redirect(request.url)
@@ -61,7 +60,7 @@ def index():
             }
             return render_template("index.html", data=data)  
     return render_template('index.html')
-'''
+
 '''
 def process_file(path, filename):
     detect_object(path, filename)
@@ -98,7 +97,7 @@ def detect_object(path, filename):
                 cv2.FONT_HERSHEY_SIMPLEX, 0.5, COLORS[idx], 2)
 
     cv2.imwrite(f"{DOWNLOAD_FOLDER}{filename}",image)
-
+'''
 @app.route('/callback', methods=['POST'])
 def callback():
     json_line = request.get_json(force=False,cache=False)
@@ -182,7 +181,7 @@ def event_handle(event):
         replyObj = StickerSendMessage(package_id=str(1),sticker_id=str(sk_id))
         line_bot_api.reply_message(rtoken, replyObj)
     return ''
-'''
+
 if __name__ == '__main__':
     app.run()
     
