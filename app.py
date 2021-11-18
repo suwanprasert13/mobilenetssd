@@ -168,7 +168,6 @@ def event_handle(event):
             '''
             crl= pycurl.Curl()
             crl.setopt( crl.URL, "https://bots.dialogflow.com/line/k--jomf/webhook")
-            '''
             crl.setopt( crl.POST, 1)
             crl.setopt( crl.BINARYTRANSFER, true)
             crl.setopt( crl.POSTFIELDS, decoded)
@@ -177,9 +176,9 @@ def event_handle(event):
             crl.setopt( crl.SSL_VERIFYPEER, 1)
             crl.setopt( crl.FOLLOWLOCATION, 1)
             crl.setopt( crl.RETURNTRANSFER, 1)
-            crl.perform()
-            crl.close()
-            '''
+            #crl.perform()
+            #crl.close()
+            
             replyObj = TextSendMessage(text=json_headers)
             line_bot_api.reply_message(rtoken, replyObj)
     elif msgType == "image":
