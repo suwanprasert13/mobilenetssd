@@ -149,8 +149,6 @@ def event_handle(event):
     if msgType == "text":
         headers = request.headers
         for k, v in headers.items():
-            if k == "Host":
-                v = "bots.dialogflow.com"
             json_headers = json.dumps(k:v)
 #        json_headers['Host'] = "bots.dialogflow.com"
 #        json_headers = json.dumps(json_headers)
