@@ -151,13 +151,14 @@ def event_handle(event):
 #        headers = werkzeug.datastructures.Headers()
 #        headers = {'X-Line-Signature':headers['X-Line-Signature'],'Host':'bots.dialogflow.com'}
         json_headers = json.dumps({k:v for k, v in headers.items()})
-#        json_headers = json.loads(headers)
+        headers = json.loads(headers)
+        headers['Host'] = 'bots.dialogflow.com'
         
         msg = str(event["message"]["text"])
         if msg == "สวัสดี":
             replyObj = TextSendMessage(text="จ้า ดีด้วยจ๊ะ")
         else :
-            replyObj = TextSendMessage(text=str(json_headers))
+            replyObj = TextSendMessage(text=str(headers))
         line_bot_api.reply_message(rtoken, replyObj)
     elif msgType == "image":
         try:
