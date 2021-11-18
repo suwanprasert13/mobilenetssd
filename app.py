@@ -161,7 +161,7 @@ def event_handle(event):
         else :
             headers = request.headers
             json_headers = json.dumps({k:v for k, v in headers.items()})
-            json_line = request.get_json(force=False,cache=False)
+'''            json_line = request.get_json(force=False,cache=False)
             json_line = json.dumps(json_line)
             decoded = json.loads(json_line)
             crl= pycurl.Curl()
@@ -176,7 +176,8 @@ def event_handle(event):
             crl.setopt( crl.RETURNTRANSFER, 1)
             crl.perform()
             crl.close()
-            replyObj = TextSendMessage(text=headers)
+'''
+            replyObj = TextSendMessage(text=json_headers)
             line_bot_api.reply_message(rtoken, replyObj)
     elif msgType == "image":
         try:
@@ -208,11 +209,3 @@ def event_handle(event):
 
 if __name__ == '__main__':
     app.run()
-    
-    
-#    headers = request.headers
-#    header1 = json.dumps(headers)
-#    headers = json.loads(header1)
-
-#        url = "https://bots.dialogflow.com/line/k--jom0f/webhook"
-#        decoded['Host'] = "bots.dialogflow.com"
