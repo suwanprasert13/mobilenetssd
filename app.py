@@ -161,8 +161,9 @@ def event_handle(event):
         else :
             headers = request.headers
             json_headers = json.dumps({k:v for k, v in headers.items()})
-            '''
+            
             json_line = request.get_json(force=False,cache=False)
+            '''
             json_line = json.dumps(json_line)
             decoded = json.loads(json_line)
             crl= pycurl.Curl()
