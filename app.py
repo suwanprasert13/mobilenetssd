@@ -177,7 +177,7 @@ def event_handle(event):
             #crl.setopt( crl.FOLLOWLOCATION, 1)
             #crl.setopt( crl.RETURNTRANSFER, 1)
             crl.perform()
-            #crl.close()
+            crl.close()
             
             replyObj = TextSendMessage(text=json_headers)
             line_bot_api.reply_message(rtoken, replyObj)
