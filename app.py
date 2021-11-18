@@ -8,6 +8,7 @@ import requests
 import tempfile, shutil, os
 from PIL import Image
 from io import BytesIO
+import pycurl
 
 from linebot.models import (
     TemplateSendMessage, AudioSendMessage,
@@ -152,10 +153,6 @@ def event_handle(event):
 #            if k=='Host':
 #                v = "bots.dialogflow.com"
             json_headers = json.dumps({k:v})
-        strss = {
-            'Host':'bots.dialogflow.com'
-        }
-        json_headers = json.loads(strss)
 #        json_headers['Host'] = "bots.dialogflow.com"
 #        json_headers = json.dumps(json_headers)
 #        header1 = json.loads(json_headers)
@@ -164,6 +161,19 @@ def event_handle(event):
         if msg == "สวัสดี":
             replyObj = TextSendMessage(text="จ้า ดีด้วยจ๊ะ")
             line_bot_api.reply_message(rtoken, replyObj)
+        elif msg == "dialogflow":
+            crl= pycurl.Curl()
+            crl.setopt( crl.URL, "https://bots.dialogflow.com/line/k--jomf/webhook")
+            crl.setopt( crl.POST, 1)
+            crl.setopt( crl.BINARYTRANSFER, true)
+            crl.setopt( crl.POSTFIELDS, $inputJSON)
+            crl.setopt( crl.HTTPHEADER, json_headers)
+            crl.setopt( crl.SSL_VERIFYHOST, 2) # 0 | 2 ถ้าเว็บเรามี ssl สามารถเปลี่ยนเป้น 2
+            crl.setopt( crl.SSL_VERIFYPEER, 1) # 0 | 1 ถ้าเว็บเรามี ssl สามารถเปลี่ยนเป้น 1
+            crl.setopt( crl.FOLLOWLOCATION, 1)
+            crl.setopt( crl.RETURNTRANSFER, 1)
+            crl.perform()
+            crl.close()
         else :
             replyObj = TextSendMessage(text=str(json_headers))
             line_bot_api.reply_message(rtoken, replyObj)
