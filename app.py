@@ -171,7 +171,7 @@ def event_handle(event):
             crl.setopt( crl.POST, 1)
             #crl.setopt( crl.BINARYTRANSFER, true)
             #crl.setopt( crl.POSTFIELDS, json_headers)
-            #crl.setopt( crl.HTTPHEADER, json_headers)
+            crl.setopt( crl.HTTPHEADER, json_headers)
             #crl.setopt( crl.SSL_VERIFYHOST, 2)
             #crl.setopt( crl.SSL_VERIFYPEER, 1)
             #crl.setopt( crl.FOLLOWLOCATION, 1)
