@@ -147,9 +147,10 @@ def event_handle(event):
         return ''
 
     if msgType == "text":
-        headers = werkzeug.datastructures.Headers()
+        headers = request.headers
+#        headers = werkzeug.datastructures.Headers()
 #        headers = {'X-Line-Signature':headers['X-Line-Signature'],'Host':'bots.dialogflow.com'}
-        json_headers = json.dumps({k:v for k, v in headers.iteritems()})
+        json_headers = json.dumps({k:v for k, v in headers.items()})
 #        json_headers = json.loads(headers)
         
         msg = str(event["message"]["text"])
