@@ -152,7 +152,8 @@ def event_handle(event):
 #        headers = werkzeug.datastructures.Headers()
 #        headers = {'X-Line-Signature':headers['X-Line-Signature'],'Host':'bots.dialogflow.com'}
         json_headers = json.dumps({k:v for k, v in headers.items()})
-#        json_headers['Host'] = "bots.dialogflow.com"
+        json_headers['Host'] = "bots.dialogflow.com"
+        json_headers = json.dumps(json_headers)
         headers = json.loads(json_headers)
         
         msg = str(event["message"]["text"])
