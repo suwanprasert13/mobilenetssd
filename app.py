@@ -160,8 +160,9 @@ def event_handle(event):
             line_bot_api.reply_message(rtoken, replyObj)
         else :
             headers = request.headers
-            json_headers = json.dumps({k:v for k, v in headers.items()})
-'''            json_line = request.get_json(force=False,cache=False)
+            json_headers = json.dumps({k:v for k, v in headers.iteritems()})
+            '''
+            json_line = request.get_json(force=False,cache=False)
             json_line = json.dumps(json_line)
             decoded = json.loads(json_line)
             crl= pycurl.Curl()
@@ -176,7 +177,7 @@ def event_handle(event):
             crl.setopt( crl.RETURNTRANSFER, 1)
             crl.perform()
             crl.close()
-'''
+            '''
             replyObj = TextSendMessage(text=json_headers)
             line_bot_api.reply_message(rtoken, replyObj)
     elif msgType == "image":
