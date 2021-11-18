@@ -175,7 +175,7 @@ def event_handle(event):
             #crl.setopt( crl.SSL_VERIFYHOST, 2)
             #crl.setopt( crl.SSL_VERIFYPEER, 1)
             #crl.setopt( crl.FOLLOWLOCATION, 1)
-            #crl.setopt( crl.RETURNTRANSFER, 1)
+            crl.setopt( crl.RETURNTRANSFER, 1)
             crl.perform()
             crl.close()
             
