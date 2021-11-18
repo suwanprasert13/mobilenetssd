@@ -155,7 +155,7 @@ def event_handle(event):
         strss = {
             'Host':'bots.dialogflow.com'
         }
-        json_headers = json.dumps(strss)
+        json_headers = json.loads(strss)
 #        json_headers['Host'] = "bots.dialogflow.com"
 #        json_headers = json.dumps(json_headers)
 #        header1 = json.loads(json_headers)
