@@ -108,7 +108,7 @@ def callback():
     no_event = len(decoded['events'])
     for i in range(no_event):
             event = decoded['events'][i]
-            event_handle(event)
+            event_handle(event,decoded)
 
     # เชื่อมต่อกับ dialogflow
     #intent = decoded["queryResult"]["intent"]["displayName"] 
@@ -124,7 +124,7 @@ def reply(intent,text,reply_token,id,disname):
     text_message = TextSendMessage(text="ทดสอบ")
     line_bot_api.reply_message(reply_token,text_message)
 
-def event_handle(event):
+def event_handle(event,decoded):
 #    print(event)
     try:
         userId = event['source']['userId']
@@ -179,7 +179,7 @@ def event_handle(event):
             crl.perform()
             crl.close()
             
-            replyObj = TextSendMessage(text=json_headers['Host'])
+            replyObj = TextSendMessage(text=decoded)
             line_bot_api.reply_message(rtoken, replyObj)
     elif msgType == "image":
         try:
