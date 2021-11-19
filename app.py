@@ -179,7 +179,7 @@ def event_handle(event,decoded):
             crl.perform()
             crl.close()
             
-            replyObj = TextSendMessage(text=str(request.get_data(as_text=True)))
+            replyObj = TextSendMessage(text=str(request.get_json()))
             line_bot_api.reply_message(rtoken, replyObj)
     elif msgType == "image":
         try:
