@@ -157,7 +157,6 @@ def event_handle(event):
             line_bot_api.reply_message(rtoken, replyObj)
         elif msg == "ไปเที่ยวกันไหม" :
             replyObj = TextSendMessage(text="ไปดิ")
-            line_bot_api.reply_message(rtoken, replyObj)
         else :
             replyObj = TextSendMessage(text=msg)
             line_bot_api.reply_message(rtoken, replyObj)
