@@ -173,7 +173,7 @@ def event_handle(event,decoded):
             crl.setopt( crl.POST, 1)
             #crl.setopt( crl.BINARYTRANSFER, true)
             #crl.setopt( crl.POSTFIELDS, json_headers)
-            crl.setopt( crl.HTTPHEADER, json_headers)
+            #crl.setopt( crl.HTTPHEADER, json_headers)
             #crl.setopt( crl.SSL_VERIFYHOST, 2)
             #crl.setopt( crl.SSL_VERIFYPEER, 1)
             #crl.setopt( crl.FOLLOWLOCATION, 1)
@@ -181,7 +181,7 @@ def event_handle(event,decoded):
             crl.perform()
             crl.close()
             
-            replyObj = TextSendMessage(text=str(json_headers))
+            replyObj = TextSendMessage(text=str(event))
             line_bot_api.reply_message(rtoken, replyObj)
     elif msgType == "image":
         try:
