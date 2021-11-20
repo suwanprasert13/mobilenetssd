@@ -167,9 +167,10 @@ def event_handle(event,decoded):
                 #json_headers = json.dumps({k:v})
                 if k=='Host':
                     v = 'dialogflow.com'
+                #data = json.load(json_headers)
                 data.append({k:v})
                 #json_headers.update(data)
-            json_header=json.dumps(data)
+            json_headers=json.dumps(data)
             
             '''
             json_line = request.get_json(force=False,cache=False)
