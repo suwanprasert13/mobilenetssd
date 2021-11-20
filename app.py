@@ -176,6 +176,7 @@ def event_handle(event,decoded):
             except:
                 replyObj = TextSendMessage(text="w,j")
                 line_bot_api.reply_message(rtoken, replyObj)
+            '''
             crl= pycurl.Curl()
             crl.setopt( pycurl.URL, "https://bots.dialogflow.com/line/k--jomf/webhook")
             crl.setopt( pycurl.POST, 1)
@@ -191,6 +192,7 @@ def event_handle(event,decoded):
             
             replyObj = TextSendMessage(text=str(decoded))
             line_bot_api.reply_message(rtoken, replyObj)
+            '''
     elif msgType == "image":
         try:
             message_content = line_bot_api.get_message_content(event['message']['id'])
