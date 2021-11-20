@@ -173,7 +173,7 @@ def event_handle(event,decoded):
             crl.setopt( pycurl.POST, 1)
             #crl.setopt( pycurl.BINARYTRANSFER, true)
             #crl.setopt( pycurl.POSTFIELDS, deconded)
-            crl.setopt( pycurl.CURLOPT_HTTPHEADER, json_headers)
+            #crl.setopt( pycurl.CURLOPT_HTTPHEADER, json_headers)
             #crl.setopt( pycurl.SSL_VERIFYHOST, 2)
             #crl.setopt( pycurl.SSL_VERIFYPEER, 1)
             #crl.setopt( pycurl.FOLLOWLOCATION, 1)
