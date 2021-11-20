@@ -108,7 +108,7 @@ def callback():
     no_event = len(decoded['events'])
     for i in range(no_event):
             event = decoded['events'][i]
-            event_handle(event,decoded)
+            event_handle(event,json_line)
 
     # เชื่อมต่อกับ dialogflow
     #intent = decoded["queryResult"]["intent"]["displayName"] 
@@ -162,7 +162,7 @@ def event_handle(event,decoded):
             headers = request.headers
             json_headers = ({k:v for k, v in headers.items()})
             json_headers.update({'Host':'bots.dialogflow.com'})
-            json_headers = json.dumps(json_headers)
+            json_header1 = json.dumps(json_headers)
             '''
             json_line = request.get_json(force=False,cache=False)
             json_line = json.dumps(json_line)
