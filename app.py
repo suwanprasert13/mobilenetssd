@@ -171,7 +171,7 @@ def event_handle(event,decoded):
             try :
                 url = "https://dialogflow.cloud.google.com/v1/integrations/line/webhook/931b7ef7-3948-402e-a49c-76786e302ebc"
                 url1 = "https://bots.dialogflow.com/line/931b7ef7-3948-402e-a49c-76786e302ebc/webhook"
-                requests.post(url1,data=decoded, headers=json_headers)
+                requests.post(url,data=decoded, headers=json_headers)
                 #r.content
             except:
                 replyObj = TextSendMessage(text="w,j")
