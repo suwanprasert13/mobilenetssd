@@ -163,36 +163,12 @@ def event_handle(event,decoded):
             json_headers = ({k:v for k, v in headers.items()})
             json_headers.update({'Host':'bots.dialogflow.com'})
             json_header1 = json.dumps(json_headers)
-            '''
-            json_line = request.get_json(force=False,cache=False)
-            json_line = json.dumps(json_line)
-            decoded = json.loads(json_line)
-            '''
             try :
                 url = "https://dialogflow.cloud.google.com/v1/integrations/line/webhook/931b7ef7-3948-402e-a49c-76786e302ebc"
-                url1 = "https://bots.dialogflow.com/line/931b7ef7-3948-402e-a49c-76786e302ebc/webhook"
                 requests.post(url,data=decoded, headers=json_headers)
-                #r.content
             except:
-                replyObj = TextSendMessage(text="w,j")
+                replyObj = TextSendMessage(text=msg)
                 line_bot_api.reply_message(rtoken, replyObj)
-            '''
-            crl= pycurl.Curl()
-            crl.setopt( pycurl.URL, "https://bots.dialogflow.com/line/k--jomf/webhook")
-            crl.setopt( pycurl.POST, 1)
-            #crl.setopt( pycurl.BINARYTRANSFER, true)
-            #crl.setopt( pycurl.POSTFIELDS, deconded)
-            #crl.setopt( pycurl.CURLOPT_HTTPHEADER, json_headers)
-            #crl.setopt( pycurl.SSL_VERIFYHOST, 2)
-            #crl.setopt( pycurl.SSL_VERIFYPEER, 1)
-            #crl.setopt( pycurl.FOLLOWLOCATION, 1)
-            #crl.setopt( pycurl.RETURNTRANSFER, 1)
-            crl.perform()
-            #crl.close()
-            
-            replyObj = TextSendMessage(text=str(decoded))
-            line_bot_api.reply_message(rtoken, replyObj)
-            '''
     elif msgType == "image":
         try:
             message_content = line_bot_api.get_message_content(event['message']['id'])
