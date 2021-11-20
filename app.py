@@ -163,13 +163,6 @@ def event_handle(event,decoded):
             json_headers = ({k:v for k, v in headers.items()})
             json_headers.update({'Host':'bots.dialogflow.com'})
             json_headers = json.dumps(json_headers)
-            #data ={}
-            #json_headers = json.dumps(data)
-            #for k, v in headers.items():
-            #    if k=='Host':
-            #        v = 'bots.dialogflow.com'
-            #    data.append({k:v})
-            #json_headers=json.dumps(data)
             '''
             json_line = request.get_json(force=False,cache=False)
             json_line = json.dumps(json_line)
@@ -180,7 +173,7 @@ def event_handle(event,decoded):
             crl.setopt( crl.POST, 1)
             #crl.setopt( crl.BINARYTRANSFER, true)
             #crl.setopt( crl.POSTFIELDS, json_headers)
-            #crl.setopt( crl.HTTPHEADER, json_headers)
+            crl.setopt( crl.HTTPHEADER, json_headers)
             #crl.setopt( crl.SSL_VERIFYHOST, 2)
             #crl.setopt( crl.SSL_VERIFYPEER, 1)
             #crl.setopt( crl.FOLLOWLOCATION, 1)
