@@ -162,6 +162,7 @@ def event_handle(event,decoded):
             headers = request.headers
             json_headers = ({k:v for k, v in headers.items()})
             json_headers.update({'Host':'bots.dialogflow.com'})
+            json_headers = json.dumps(json_headers)
             #data ={}
             #json_headers = json.dumps(data)
             #for k, v in headers.items():
