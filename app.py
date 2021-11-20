@@ -160,7 +160,7 @@ def event_handle(event,decoded):
             line_bot_api.reply_message(rtoken, replyObj)
         else :
             headers = request.headers
-            data =[{}]
+            data ={}
             json_headers = json.dumps(data)
             
             for k, v in headers.items():
