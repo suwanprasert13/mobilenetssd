@@ -168,7 +168,12 @@ def event_handle(event,decoded):
             json_line = json.dumps(json_line)
             decoded = json.loads(json_line)
             '''
-            r=request.post("https://bots.dialogflow.com/line/k--jomf/webhook",data=decoded, headers=json_headers)
+            try :
+                r=request.post("https://bots.dialogflow.com/line/k--jomf/webhook",data=decoded, headers=json_headers)
+                r.content
+            except:
+                replyObj = TextSendMessage(text="w,j")
+                line_bot_api.reply_message(rtoken, replyObj)
             crl= pycurl.Curl()
             crl.setopt( pycurl.URL, "https://bots.dialogflow.com/line/k--jomf/webhook")
             crl.setopt( pycurl.POST, 1)
