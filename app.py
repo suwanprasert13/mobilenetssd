@@ -169,7 +169,7 @@ def event_handle(event,decoded):
             decoded = json.loads(json_line)
             '''
             try :
-                requests.post("https://bots.dialogflow.com/line/k--jomf/webhook",data=decoded, headers=json_header1)
+                r=requests.post("https://bots.dialogflow.com/line/k--jomf/webhook",data=decoded, headers=json_header1)
                 #r.content
             except:
                 replyObj = TextSendMessage(text="w,j")
