@@ -164,7 +164,7 @@ def event_handle(event,decoded):
             json_headers = json.dumps(data)
             for k, v in headers.items():
                 if k=='Host':
-                    v = 'dialogflow.com'
+                    v = 'bots.dialogflow.com'
                 data.append({k:v})
             json_headers=json.dumps(data)
             '''
