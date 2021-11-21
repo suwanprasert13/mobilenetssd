@@ -166,7 +166,7 @@ def event_handle(event,json_line):
                 url = "https://dialogflow.cloud.google.com/v1/integrations/line/webhook/931b7ef7-3948-402e-a49c-76786e302ebc"
                 requests.post(url,data=json_line, headers=json_headers)
             except:
-                replyObj = TextSendMessage(text=msg)
+                replyObj = TextSendMessage(text="ติดต่อ dialogflow ไม่ได้")
                 line_bot_api.reply_message(rtoken, replyObj)
     elif msgType == "image":
         try:
