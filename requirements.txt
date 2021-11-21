@@ -12,3 +12,4 @@ opencv-python-headless
 requests
 line-bot-sdk
 Pillow
+pandas
