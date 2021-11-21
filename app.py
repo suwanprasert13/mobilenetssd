@@ -123,7 +123,7 @@ def reply(intent,text,reply_token,id,disname):
     text_message = TextSendMessage(text="ทดสอบ")
     line_bot_api.reply_message(reply_token,text_message)
 
-def event_handle(event,decoded):
+def event_handle(event,json_line):
 #    print(event)
     try:
         userId = event['source']['userId']
@@ -164,7 +164,7 @@ def event_handle(event,decoded):
             json_header1 = json.dumps(json_headers)
             try :
                 url = "https://dialogflow.cloud.google.com/v1/integrations/line/webhook/931b7ef7-3948-402e-a49c-76786e302ebc"
-                requests.post(url,data=decoded, headers=json_headers)
+                requests.post(url,data=json_line, headers=json_headers)
             except:
                 replyObj = TextSendMessage(text=msg)
                 line_bot_api.reply_message(rtoken, replyObj)
