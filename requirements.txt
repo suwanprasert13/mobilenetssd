@@ -12,4 +12,3 @@ opencv-python-headless
 requests
 line-bot-sdk
 Pillow
-dlib
