@@ -5,11 +5,10 @@ itsdangerous==1.1.0
 Jinja2==2.11.2
 MarkupSafe==1.1.1
 numpy==1.18.5
-opencv-python==4.5.3.56
+opencv-python==3.4.16.57
 Werkzeug==1.0.1
-opencv-contrib-python==4.5.3.56
-opencv-python-headless==4.5.3.56
+opencv-contrib-python
+opencv-python-headless
 requests
 line-bot-sdk
 Pillow==8.3.2
-pycurl
