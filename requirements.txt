@@ -7,8 +7,8 @@ MarkupSafe==1.1.1
 numpy==1.18.5
 opencv-python==3.4.16.57
 Werkzeug==1.0.1
-opencv-contrib-python
-opencv-python-headless
+opencv-contrib-python==3.4.16.57
+opencv-python-headless==3.4.16.57
 requests
 line-bot-sdk
 Pillow==8.3.2
