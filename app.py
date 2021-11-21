@@ -160,7 +160,7 @@ def event_handle(event,json_line):
         elif msg == "พยากรณ์อากาศ" :
             url = 'http://api.openweathermap.org/data/2.5/weather?q=Bangkok'
             response = requests.get(url)
-            replyObj = TextSendMessage(text=response)
+            replyObj = TextSendMessage(text=str(response))
             line_bot_api.reply_message(rtoken, replyObj)
         else :
             headers = request.headers
