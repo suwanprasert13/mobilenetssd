@@ -160,11 +160,13 @@ def event_handle(event,json_line):
         elif msg == "พยากรณ์อากาศ" :
             url = "https://pro.openweathermap.org/data/2.5/forecast/hourly?q={Trat}&appid=d7d8657acc2cba4726e59bcd6394e2ba"
             response = requests.get(url)
+            response = response.json()
             replyObj = TextSendMessage(text=str(response))
             line_bot_api.reply_message(rtoken, replyObj)
         elif msg == "covid" :
             url = "https://covid19.ddc.moph.go.th/api/Cases/today-cases-all"
             response = requests.get(url)
+            response = response.json()
             replyObj = TextSendMessage(text=str(response))
             line_bot_api.reply_message(rtoken, replyObj)
         else :
