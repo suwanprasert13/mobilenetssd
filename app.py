@@ -161,7 +161,7 @@ def event_handle(event,json_line):
             headers = request.headers
             json_headers = ({k:v for k, v in headers.items()})
             json_headers.update({'Host':'bots.dialogflow.com'})
-            json_header1 = json.dumps(json_headers)
+            #json_header1 = json.dumps(json_headers)
             try :
                 url = "https://dialogflow.cloud.google.com/v1/integrations/line/webhook/931b7ef7-3948-402e-a49c-76786e302ebc"
                 requests.post(url,data=json_line, headers=json_headers)
