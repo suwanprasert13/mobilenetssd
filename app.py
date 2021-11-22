@@ -156,29 +156,9 @@ def event_handle(event,json_line):
         elif msg == "ไปเที่ยวกันไหม" :
             replyObj = TextSendMessage(text="ไปดิ")
             line_bot_api.reply_message(rtoken, replyObj)
-        elif msg == "พยากรณ์อากาศ" :
-            url = "https://pro.openweathermap.org/data/2.5/forecast/hourly?q={Trat,TH}&appid=d7d8657acc2cba4726e59bcd6394e2ba"
-            response = requests.get(url)
-            response = response.json()
-            replyObj = TextSendMessage(text=str(response))
+       else :
+            replyObj = TextSendMessage(text=msg)
             line_bot_api.reply_message(rtoken, replyObj)
-        elif msg == "covid" :
-            url = "https://covid19.ddc.moph.go.th/api/Cases/today-cases-all"
-            response = requests.get(url)
-            response = response.json()
-            replyObj = TextSendMessage(text=str(response))
-            line_bot_api.reply_message(rtoken, replyObj)
-        else :
-            headers = request.headers
-            json_headers = ({k:v for k, v in headers.items()})
-            json_headers.update({'Host':'bots.dialogflow.com'})
-            #json_header1 = json.dumps(json_headers)
-            try :
-                url = "https://dialogflow.cloud.google.com/v1/integrations/line/webhook/931b7ef7-3948-402e-a49c-76786e302ebc"
-                requests.post(url,data=json_line, headers=json_headers)
-            except:
-                replyObj = TextSendMessage(text="ติดต่อ dialogflow ไม่ได้")
-                line_bot_api.reply_message(rtoken, replyObj)
     elif msgType == "image":
         try:
             message_content = line_bot_api.get_message_content(event['message']['id'])
