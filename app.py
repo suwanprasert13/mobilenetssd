@@ -53,7 +53,7 @@ def index():
         if file and allowed_file(file.filename):
             filename = secure_filename(file.filename)
             file.save(os.path.join(UPLOAD_FOLDER, filename))
-#            process_file(os.path.join(UPLOAD_FOLDER, filename), filename)
+            process_file(os.path.join(UPLOAD_FOLDER, filename), filename)
             data={
                 "processed_img":'static/downloads/'+filename,
                 "uploaded_img":'static/uploads/'+filename
@@ -124,7 +124,6 @@ def reply(intent,text,reply_token,id,disname):
     line_bot_api.reply_message(reply_token,text_message)
 
 def event_handle(event,json_line):
-#    print(event)
     try:
         userId = event['source']['userId']
     except:
@@ -166,7 +165,7 @@ def event_handle(event,json_line):
         elif msg == "covid" :
             url = "https://covid19.ddc.moph.go.th/api/Cases/today-cases-all"
             response = requests.get(url)
-            response = response.json()
+            #response = response.json()
             replyObj = TextSendMessage(text=str(response["new_case"]))
             line_bot_api.reply_message(rtoken, replyObj)
         else :
