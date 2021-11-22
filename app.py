@@ -158,7 +158,8 @@ def event_handle(event,json_line):
             replyObj = TextSendMessage(text="ไปดิ")
             line_bot_api.reply_message(rtoken, replyObj)
         elif msg == "พยากรณ์อากาศ" :
-            url = "https://pro.openweathermap.org/data/2.5/forecast/hourly?q={Trat}&appid=d7d8657acc2cba4726e59bcd6394e2ba"
+            url = "https://pro.openweathermap.org/data/2.5/forecast/hourly?q={Trat,TH}&appid=d7d8657acc2cba4726e59bcd6394e2ba
+"
             response = requests.get(url)
             response = response.json()
             replyObj = TextSendMessage(text=str(response))
