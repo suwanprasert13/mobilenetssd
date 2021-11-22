@@ -167,7 +167,7 @@ def event_handle(event,json_line):
             url = "https://covid19.ddc.moph.go.th/api/Cases/today-cases-all"
             response = requests.get(url)
             response = response.json()
-            replyObj = TextSendMessage(text=str(response))
+            replyObj = TextSendMessage(text="วันที่ ".str(response["txn_date"])." จำนวนผู้ติดเชื้อรายใหม่่= ".str(response["new_case"]))
             line_bot_api.reply_message(rtoken, replyObj)
         else :
             headers = request.headers
