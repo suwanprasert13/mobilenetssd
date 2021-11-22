@@ -5,7 +5,7 @@ import cv2
 import numpy as np
 import json
 import requests
-import tempfile, shutil, os
+import tempfile, shutil,  os
 from PIL import Image
 from io import BytesIO
 
@@ -58,9 +58,8 @@ def index():
                 "processed_img":'static/downloads/'+filename,
                 "uploaded_img":'static/uploads/'+filename
             }
-            return render_template("index.html",data=data)  
+            return render_template("index.html", data=data)  
     return render_template('index.html')
-
 
 def process_file(path, filename):
     detect_object(path, filename)
@@ -108,7 +107,7 @@ def callback():
     no_event = len(decoded['events'])
     for i in range(no_event):
             event = decoded['events'][i]
-            event_handle(event)
+            event_handle(event,json_line)
 
     # เชื่อมต่อกับ dialogflow
     #intent = decoded["queryResult"]["intent"]["displayName"] 
@@ -124,8 +123,7 @@ def reply(intent,text,reply_token,id,disname):
     text_message = TextSendMessage(text="ทดสอบ")
     line_bot_api.reply_message(reply_token,text_message)
 
-def event_handle(event):
-#    print(event)
+def event_handle(event,json_line):
     try:
         userId = event['source']['userId']
     except:
@@ -147,17 +145,40 @@ def event_handle(event):
         line_bot_api.reply_message(rtoken, replyObj)
         return ''
 
-    if msgType == "text":
+    if msgType == "text":       
         msg = str(event["message"]["text"])
         if msg == "สวัสดี" :
-            replyObj = TextSendMessage(text="เออ...ดีด้วย")
+            replyObj = TextSendMessage(text="เออ ดีด้วย")
+            line_bot_api.reply_message(rtoken, replyObj)
         elif msg == "กินข้าวไหม" :
-            replyObj = TextSendMessage(text="กินซิ หิวมาก")
+            replyObj = TextSendMessage(text="ไม่ล่ะ กลัวอ้วน")
+            line_bot_api.reply_message(rtoken, replyObj)
         elif msg == "ไปเที่ยวกันไหม" :
             replyObj = TextSendMessage(text="ไปดิ")
+            line_bot_api.reply_message(rtoken, replyObj)
+        elif msg == "พยากรณ์อากาศ" :
+            url = "https://pro.openweathermap.org/data/2.5/forecast/hourly?q={Trat,TH}&appid=d7d8657acc2cba4726e59bcd6394e2ba"
+            response = requests.get(url)
+            response = response.json()
+            replyObj = TextSendMessage(text=str(response))
+            line_bot_api.reply_message(rtoken, replyObj)
+        elif msg == "covid" :
+            url = "https://covid19.ddc.moph.go.th/api/Cases/today-cases-all"
+            response = requests.get(url)
+            response = response.json()
+            replyObj = TextSendMessage(text=str(response))
+            line_bot_api.reply_message(rtoken, replyObj)
         else :
-            replyObj = TextSendMessage(text="ไม่รู้ไม่ชี้")
-        line_bot_api.reply_message(rtoken, replyObj)
+            headers = request.headers
+            json_headers = ({k:v for k, v in headers.items()})
+            json_headers.update({'Host':'bots.dialogflow.com'})
+            #json_header1 = json.dumps(json_headers)
+            try :
+                url = "https://dialogflow.cloud.google.com/v1/integrations/line/webhook/931b7ef7-3948-402e-a49c-76786e302ebc"
+                requests.post(url,data=json_line, headers=json_headers)
+            except:
+                replyObj = TextSendMessage(text="ติดต่อ dialogflow ไม่ได้")
+                line_bot_api.reply_message(rtoken, replyObj)
     elif msgType == "image":
         try:
             message_content = line_bot_api.get_message_content(event['message']['id'])
@@ -188,11 +209,3 @@ def event_handle(event):
 
 if __name__ == '__main__':
     app.run()
-    
-    
-#    headers = request.headers
-#    header1 = json.dumps(headers)
-#    headers = json.loads(header1)
-
-#        url = "https://bots.dialogflow.com/line/k--jom0f/webhook"
-#        decoded['Host'] = "bots.dialogflow.com"
