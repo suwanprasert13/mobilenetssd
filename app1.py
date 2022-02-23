@@ -1,7 +1,7 @@
 import os
 from flask import Flask, request, redirect, url_for, render_template, send_from_directory, flash, jsonify
 from werkzeug.utils import secure_filename
-#import cv2
+import cv2
 import numpy as np
 import json
 import requests
@@ -19,9 +19,9 @@ from linebot.models.template import *
 from linebot import (
     LineBotApi, WebhookHandler
 )
-
+'''
 app = Flask(__name__, static_url_path="/static")
-
+'''
 UPLOAD_FOLDER ='static/uploads/'
 DOWNLOAD_FOLDER = 'static/downloads/'
 ALLOWED_EXTENSIONS = {'jpg', 'png','.jpeg'}
