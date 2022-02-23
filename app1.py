@@ -1,6 +1,6 @@
 import os
-from flask import Flask, request, redirect, url_for, render_template, send_from_directory, flash, jsonify
 '''
+from flask import Flask, request, redirect, url_for, render_template, send_from_directory, flash, jsonify
 from werkzeug.utils import secure_filename
 import cv2
 import numpy as np
@@ -20,9 +20,9 @@ from linebot.models.template import *
 from linebot import (
     LineBotApi, WebhookHandler
 )
-'''
+
 app = Flask(__name__, static_url_path="/static")
-'''
+
 UPLOAD_FOLDER ='static/uploads/'
 DOWNLOAD_FOLDER = 'static/downloads/'
 ALLOWED_EXTENSIONS = {'jpg', 'png','.jpeg'}
@@ -197,6 +197,7 @@ def event_handle(event,json_line):
         replyObj = StickerSendMessage(package_id=str(1),sticker_id=str(sk_id))
         line_bot_api.reply_message(rtoken, replyObj)
     return ''
-'''
+
 if __name__ == '__main__':
     app.run()
+'''
